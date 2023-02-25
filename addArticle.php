@@ -5,8 +5,8 @@
                 <input type="text" class="form-control" name="title" placeholder="Заголовок">
             </div>
             <div class="mb-3">
-              <!--  <textarea name="content" placeholder="Контент" class="form-control"></textarea> -->
-                <textarea id="sample">Hi</textarea>  
+                <!--<textarea name="content" placeholder="Контент" class="form-control"></textarea>-->
+                <textarea id="sample">Hi</textarea>
             </div>
             <div class="mb-3">
                 <input name="author" type="text" class="form-control" placeholder="Автор">
@@ -25,8 +25,8 @@
 <script src="https://cdn.jsdelivr.net/npm/suneditor@latest/src/lang/ru.js"></script>
 <script>
     const editor = SUNEDITOR.create((document.getElementById('sample') || 'sample'),{
-        lang: SUNEDITOR_LANG['ko'],
-        width: '100%'
-         
-    }); 
+        lang: SUNEDITOR_LANG['ru'],
+        width: '100%',
+        height: '400px'
+    });
 </script>

@@ -9,14 +9,13 @@
 </head>
 <body>
     <script>
-        // alert("Hello world");
-        //document.write("Hello world");
-        //console.log("Hello world");
-        /*let a = +prompt("Введите число a");
-        let b = +prompt("Введите число b");
-        console.log(a+b);
-        console.log(a-b);
-        console.log(a*b);*/
+        let login = prompt("Введите логин");
+        let pass = prompt("Введите пароль");
+        if(login == "Admin" && pass == "123"){
+            console.log("Доступ разрешен")
+        }else{
+            console.log("Доступ запрещен")
+        }
     </script>
 </body>
 </html>
