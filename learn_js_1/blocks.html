@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #redBox, #blueBox, #limeBox, #yellowBox{
+            width: 150px;
+            height: 150px;
+            position: absolute;
+            }   
+            
+            #blueBox{
+                background: blue;
+                left: 0px;
+                bottom: 0px;
+            }
+            #redBox{
+                background: red;
+                top: 0px;
+                left: 0px;
+            }
+            #limeBox{
+                background: lime;
+                top: 0px;
+                right: 0px;
+            }
+            #yellowBox{
+                background: yellow;
+                right: 0px;
+                bottom: 0px;
+            }
+            
+            .circle{
+                width: 100px;
+                height: 100px;
+                background: yellow;
+                border: 1px solid black;
+                border-radius: 50%;
+                position: absolute;
+            }
+    </style>
+</head>
+<body>
+    <div id="redBox" data-rolor="red"></div>
+    <div id="blueBox" data-rolor="blue"></div>
+    <div id="limeBox" data-rolor="lime"></div>
+    <div id="yellowBox" data-rolor="yellow"></div>
+    <script>
+        
+        let colors = ["red", "blue", "lime", "yllow"];
+        for(let i = 0; i < 5; i++){
+            renderCircle();
+        }
+
+        function renderCircle(){
+            let circle = document.createElement("div"); //Создаём тег <div>
+            circle.classList.add('circle'); // Назначаем CSS-класс .circle тегу
+            circle.style.top = getRandom(150, innerHeight-150)+"px";
+            circle.style.left = getRandom(150, innerWidth-150)+"px";
+            circle.style.backgroundColor = colors[getRandom(0, colors.length)];
+            circle.onmousedown = function (event){
+            circle.style.top = event.pageY-50+"px";
+            circle.style.left = event.pageX-50+"px";
+            window.onmousemove = function (e){
+                console.log("Сдвиг на точке X:"+e.pageX, "Y: "+e.pageY);
+                circle.style.top = e.pageY-50+"px";
+                circle.style.left = e.pageX-50+"px";
+            }
+            circle.onmouseup = function (ev){
+                circle.hidden = true;
+                console.log(document.elementFromPoint(ev,clientX, ev.clientY));
+                circle.hidden = false;
+                window.onmousemove = function (){returnfalse;}
+            }
+        }
+            document.body.append(circle); // добавляем тег внутрь тега body
+        }
+
+        function getRandom(min,max){
+            return Math.floor(Math.random()*(max-min)+min);
+        }
+    </script>
+</body>
+</html>
